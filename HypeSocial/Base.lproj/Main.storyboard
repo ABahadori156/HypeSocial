@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignInVC" customModule="HypeSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,107 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taC-EM-gG7">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="HypeSocial (1)" translatesAutoresizingMaskIntoConstraints="NO" id="lBU-1D-b8B">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="GIr-LO-GAC"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.83529411764705885" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lBU-1D-b8B" secondAttribute="trailing" constant="67" id="EtB-zg-Pco"/>
+                                    <constraint firstAttribute="height" constant="150" id="PoJ-Ke-RuR"/>
+                                    <constraint firstItem="lBU-1D-b8B" firstAttribute="leading" secondItem="taC-EM-gG7" secondAttribute="leading" constant="66" id="duh-eR-R9x"/>
+                                    <constraint firstAttribute="bottom" secondItem="lBU-1D-b8B" secondAttribute="bottom" constant="8" id="krc-0s-9e1"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1r-4M-DR7">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you haven't signed in before, an account will automatically be created for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UZ-f1-EZ7">
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.51372549019607838" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8UZ-f1-EZ7" firstAttribute="top" secondItem="y1r-4M-DR7" secondAttribute="top" constant="8" id="5oa-73-rEE"/>
+                                    <constraint firstAttribute="bottom" secondItem="8UZ-f1-EZ7" secondAttribute="bottom" constant="8" id="Vdr-zk-PxQ"/>
+                                    <constraint firstAttribute="height" constant="75" id="aHj-6v-mrR"/>
+                                    <constraint firstAttribute="trailing" secondItem="8UZ-f1-EZ7" secondAttribute="trailing" constant="8" id="bFi-Yd-frM"/>
+                                    <constraint firstItem="8UZ-f1-EZ7" firstAttribute="leading" secondItem="y1r-4M-DR7" secondAttribute="leading" constant="8" id="uPl-Cp-YZP"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a sign in method" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYI-9y-3Ce">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="vj3-fg-toe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSE-tP-hOe">
+                                <color key="backgroundColor" red="0.21568627450980393" green="0.31372549019607843" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9Sk-ce-sA6"/>
+                                    <constraint firstAttribute="width" constant="150" id="e2e-08-EXk"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="f">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-o8-X5V">
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86v-Ll-z49">
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-X6-w1N">
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOG-0Z-CjO">
+                                        <color key="backgroundColor" red="0.8666666666666667" green="0.17254901960784313" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g5V-o8-X5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9PF-yt-AEd"/>
+                            <constraint firstAttribute="trailing" secondItem="y1r-4M-DR7" secondAttribute="trailing" id="BEL-Bo-Eu6"/>
+                            <constraint firstItem="y1r-4M-DR7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Hdb-ZV-CNq"/>
+                            <constraint firstItem="LYI-9y-3Ce" firstAttribute="top" secondItem="taC-EM-gG7" secondAttribute="bottom" constant="20" id="JNi-bc-Ju1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g5V-o8-X5V" secondAttribute="trailing" constant="30" id="KkB-UO-09n"/>
+                            <constraint firstAttribute="trailing" secondItem="taC-EM-gG7" secondAttribute="trailing" id="MsB-fj-s5w"/>
+                            <constraint firstItem="taC-EM-gG7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PUP-Vp-MMX"/>
+                            <constraint firstItem="iSE-tP-hOe" firstAttribute="top" secondItem="LYI-9y-3Ce" secondAttribute="bottom" constant="40" id="UUA-C2-BsZ"/>
+                            <constraint firstItem="g5V-o8-X5V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="aFM-3O-xWu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LYI-9y-3Ce" secondAttribute="trailing" id="aNn-TZ-jZh"/>
+                            <constraint firstItem="taC-EM-gG7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bj4-de-1Ss"/>
+                            <constraint firstItem="iSE-tP-hOe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hIT-IE-jFa"/>
+                            <constraint firstItem="LYI-9y-3Ce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="r06-hs-8pC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="y1r-4M-DR7" secondAttribute="bottom" id="t9e-Vj-ND2"/>
+                            <constraint firstItem="g5V-o8-X5V" firstAttribute="top" secondItem="iSE-tP-hOe" secondAttribute="bottom" constant="40" id="uSP-nq-JCp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="116" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HypeSocial (1)" width="141" height="52"/>
+        <image name="f" width="352" height="328"/>
+    </resources>
 </document>
