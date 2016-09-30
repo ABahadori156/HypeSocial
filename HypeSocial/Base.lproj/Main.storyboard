@@ -72,6 +72,9 @@
                                 <state key="normal" backgroundImage="f">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qBx-Jp-aK0"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-o8-X5V">
                                 <subviews>
@@ -83,7 +86,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-X6-w1N" customClass="FancyField" customModule="HypeSocial" customModuleProvider="target">
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOG-0Z-CjO" customClass="FancyButton" customModule="HypeSocial" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.8666666666666667" green="0.17254901960784313" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
@@ -91,6 +94,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gga-I2-HSY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -114,6 +120,10 @@
                             <constraint firstItem="g5V-o8-X5V" firstAttribute="top" secondItem="iSE-tP-hOe" secondAttribute="bottom" constant="40" id="uSP-nq-JCp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="86v-Ll-z49" id="XmR-Sx-O83"/>
+                        <outlet property="passwordField" destination="D1G-X6-w1N" id="Cvt-ac-usW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

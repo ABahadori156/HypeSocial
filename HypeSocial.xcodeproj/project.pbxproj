@@ -36,6 +36,7 @@
 		356903051D9236DC00BDC1AA /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
 		356903071D92388800BDC1AA /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		356903091D923A3700BDC1AA /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		3569030B1D92FEA800BDC1AA /* HypeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HypeSocial.entitlements; sourceTree = "<group>"; };
 		B223FDD4B4257B26932B0AED /* Pods-HypeSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HypeSocial.release.xcconfig"; path = "Pods/Target Support Files/Pods-HypeSocial/Pods-HypeSocial.release.xcconfig"; sourceTree = "<group>"; };
 		D7CAB89A285F1B5ECF224246 /* Pods_HypeSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HypeSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,6 +74,7 @@
 		356902E71D91FCAC00BDC1AA /* HypeSocial */ = {
 			isa = PBXGroup;
 			children = (
+				3569030B1D92FEA800BDC1AA /* HypeSocial.entitlements */,
 				356902FC1D92067200BDC1AA /* Model */,
 				356902FD1D92067800BDC1AA /* View */,
 				356902FE1D92067C00BDC1AA /* Controller */,
@@ -98,7 +100,6 @@
 		356902FD1D92067800BDC1AA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				356902EA1D91FCAC00BDC1AA /* SignInVC.swift */,
 				356903001D92341C00BDC1AA /* FancyView.swift */,
 				356903051D9236DC00BDC1AA /* FacebookButton.swift */,
 				356903071D92388800BDC1AA /* FancyField.swift */,
@@ -110,6 +111,7 @@
 		356902FE1D92067C00BDC1AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				356902EA1D91FCAC00BDC1AA /* SignInVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -183,6 +185,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = Z65JLH99GY;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -401,6 +408,7 @@
 			baseConfigurationReference = 0EDACDD3DA4312D8CF30320B /* Pods-HypeSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HypeSocial/HypeSocial.entitlements;
 				DEVELOPMENT_TEAM = Z65JLH99GY;
 				INFOPLIST_FILE = HypeSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -415,6 +423,7 @@
 			baseConfigurationReference = B223FDD4B4257B26932B0AED /* Pods-HypeSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HypeSocial/HypeSocial.entitlements;
 				DEVELOPMENT_TEAM = Z65JLH99GY;
 				INFOPLIST_FILE = HypeSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
