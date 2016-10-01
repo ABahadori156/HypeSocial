@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
@@ -19,9 +20,18 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        
+     
     }
 
+    //Segueways to be performed off the bat need to be in viewDidAPPEAR not didLoad
+    override func viewDidAppear(_ animated: Bool) {
+        //This is checking the string in the uid, in the keychain - if it finds one, perform the segueway to go to FeedVC
+        if let _ = KeychainWrapper.defaultKeychainWrapper().stringForKey(KEY_UID) {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
   
 
     //We have two authentications - one with Facebook and one with Firebase
@@ -58,6 +68,9 @@ class SignInVC: UIViewController {
                 print("PASH: Unable to authenticate with Firebase - \(error)")
             } else {
                 print("PASH: Successfully authenticated with Firebase!")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
             }
         })
     }
@@ -68,6 +81,10 @@ class SignInVC: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
                     print("PASH: Email user authenticated with Firebase")
+                    if let user = user {
+                          self.completeSignIn(id: user.uid)
+                    }
+                  
                 } else {
                     //List out error scenarios - Lookup Firebase Documentation on how to correctly do this
                     //For this example, we'll create a new user
@@ -76,6 +93,9 @@ class SignInVC: UIViewController {
                              print("PASH: Unable to authenticate with Firebase using email \(error)")
                         } else {
                             print("PASH: Successfully authenticated with Firebase")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                    /*Create User Block End */ })
                 }
@@ -83,7 +103,12 @@ class SignInVC: UIViewController {
         }
     }/*SIGN IN FUNC END */
     
-    
+    //Saving user's UID to their keychain
+    func completeSignIn(id: String) {
+        let keychainResult = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_UID)
+        print("PASH: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
     
     
 
