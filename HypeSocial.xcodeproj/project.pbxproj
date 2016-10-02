@@ -10,6 +10,7 @@
 		3516DF141D9F13AB00A7EAAC /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516DF131D9F13AB00A7EAAC /* FeedVC.swift */; };
 		3516DF161D9F720B00A7EAAC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516DF151D9F720B00A7EAAC /* CircleView.swift */; };
 		3516DF181DA0762300A7EAAC /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516DF171DA0762300A7EAAC /* PostCell.swift */; };
+		3516DF1B1DA09BCA00A7EAAC /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3516DF1A1DA09BCA00A7EAAC /* DataService.swift */; };
 		356902E91D91FCAC00BDC1AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356902E81D91FCAC00BDC1AA /* AppDelegate.swift */; };
 		356902EB1D91FCAC00BDC1AA /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356902EA1D91FCAC00BDC1AA /* SignInVC.swift */; };
 		356902EE1D91FCAC00BDC1AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356902EC1D91FCAC00BDC1AA /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		3516DF131D9F13AB00A7EAAC /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		3516DF151D9F720B00A7EAAC /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3516DF171DA0762300A7EAAC /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		3516DF1A1DA09BCA00A7EAAC /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		356902E51D91FCAC00BDC1AA /* HypeSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HypeSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356902E81D91FCAC00BDC1AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		356902EA1D91FCAC00BDC1AA /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3516DF191DA09B8500A7EAAC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3516DF1A1DA09BCA00A7EAAC /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		356902DC1D91FCAC00BDC1AA = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		356902E71D91FCAC00BDC1AA /* HypeSocial */ = {
 			isa = PBXGroup;
 			children = (
+				3516DF191DA09B8500A7EAAC /* Services */,
 				3569030B1D92FEA800BDC1AA /* HypeSocial.entitlements */,
 				356902FC1D92067200BDC1AA /* Model */,
 				356902FD1D92067800BDC1AA /* View */,
@@ -293,6 +304,7 @@
 				356902EB1D91FCAC00BDC1AA /* SignInVC.swift in Sources */,
 				356903061D9236DC00BDC1AA /* FacebookButton.swift in Sources */,
 				3569030A1D923A3700BDC1AA /* FancyButton.swift in Sources */,
+				3516DF1B1DA09BCA00A7EAAC /* DataService.swift in Sources */,
 				3516DF141D9F13AB00A7EAAC /* FeedVC.swift in Sources */,
 				356902E91D91FCAC00BDC1AA /* AppDelegate.swift in Sources */,
 				356903011D92341C00BDC1AA /* FancyView.swift in Sources */,

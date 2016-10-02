@@ -69,7 +69,9 @@ class SignInVC: UIViewController {
             } else {
                 print("PASH: Successfully authenticated with Firebase!")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    //We use the proper provider which is taken from the credential we get from authenticating with Facebook
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         })
@@ -82,7 +84,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("PASH: Email user authenticated with Firebase")
                     if let user = user {
-                          self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                   
                 } else {
@@ -94,7 +97,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("PASH: Successfully authenticated with Firebase")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                    /*Create User Block End */ })
@@ -104,7 +108,8 @@ class SignInVC: UIViewController {
     }/*SIGN IN FUNC END */
     
     //Saving user's UID to their keychain
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_UID)
         print("PASH: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
