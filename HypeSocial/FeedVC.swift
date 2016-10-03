@@ -16,10 +16,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircleView!
+    @IBOutlet weak var captionField: FancyField!
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
-    
+    var imageSelected = false
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
@@ -51,10 +52,58 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     } /* End of ViewDidLoad*/
     
     
+    //SAVING POST TO FIREBASE
+    @IBAction func postBtnTapped(_ sender: AnyObject) {
+        //User will be able to fire off a post action - but the image has to be selected first
+        // Guard statement: It stops having a big chain of if let statements. This works in our case because we will be checking for many conditions
+        //What a guard statement does, and you can have multiple of them together
+        //So we create a constant and check if there is text in the captionField, and it also might be blank ""
+        guard let caption = captionField.text, caption != "" else {
+            print("PASH: Caption must be entered")
+            return
+            // So if we go into this and tap the action and they havent put in text in the captionField, then it will drop into this block, print "Caption Must be Entered" then exit
+        }
+        //Check if there is an image, IF NOT, print "An image must be selected"
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("PASH: An image must be selected")
+            return
+        }
+        
+        //This converts our Image into Image Data which can be used to pass up to Firebase Storage - we also set it as a JPEG and compress the image file
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            
+            //This generates a post ID - unique identifier
+            let imgUid = NSUUID().uuidString
+            
+            //We have meta data here for our image to tell Firebase Storage that it's a JPEG we're passing in - So Firebase knows we're passing an image in
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            //The child here is the image name that we are passing up. THIS IS BEFORE WE HAVE A POSTID.
+            DataService.ds.REF_POST_IMAGES.child(imgUid).put(imgData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    print("PASH: Unable to upload image to FB Storage")
+                } else {
+                    print("PASH: Successfully uploaded image to Firebase storage")
+                    //We get this as an absolute string since it's a URL to get the raw value
+                    //We use this downloadURL to post to Firebase
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //If the image is the image that the user is editing then .. Set the image of our imageAdd button to the edited image
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            
+            //We set imageSelected to true now because this is where in the execution the user has selected an image for the post
+            imageSelected = true
         } else {
             print("PASH: A valid image wasn't selected")
         }
