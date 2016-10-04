@@ -28,7 +28,7 @@ class PostCell: UITableViewCell {
     //The UIImage? = nil will make the img parameter a default of nil if there is nothing there. So if you call the below function and don't pass in anything to it, it will just use that default value. 
     func configureCell(post: Post, img: UIImage? = nil) {
         self.post = post
-        self.caption.text = post.caption
+        self.caption.text = post.caption 
         self.likesLabel.text = "\(post.likes)"
         
         //Download the image in ConfigureCell - We'll check in our cache if we have the image locally, if we do, we'll grab it

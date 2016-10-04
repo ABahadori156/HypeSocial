@@ -88,12 +88,32 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     //We get this as an absolute string since it's a URL to get the raw value
                     //We use this downloadURL to post to Firebase
                     let downloadURL = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                         self.postToFirebase(imgUrl: url)
+                    }
+                   
                 }
             }
         }
         
     }
     
+    
+    func postToFirebase(imgUrl: String) {
+        //This is the object we'll post to Firebase Database for the post
+        let post = [
+            "caption": captionField.text! as String,
+            "imageUrl": imgUrl as String,
+            "likes": 0 as Int
+            ] as [String : Any]
+        //childByAutoId generates a new child location using a unique key and returns a FIRDatabaseReference to it. This is useful when the children of a Firebase Database location represents a list of items
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        //We use set value but we can do updateValue also.
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+    }
     
     
     
@@ -151,6 +171,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
        
     }
+    
+    
     
     
     //SIGN OUT
