@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SwiftKeychainWrapper
 
 
 let DB_BASE = FIRDatabase.database().reference()    //This will contain the URL of the root of our database
@@ -30,6 +31,7 @@ class DataService {
     private var _REF_POSTS = DB_BASE.child("posts")
     private var _REF_USERS = DB_BASE.child("users")
     
+    
     var REF_BASE: FIRDatabaseReference {
         return _REF_BASE
     }
@@ -42,10 +44,18 @@ class DataService {
         return _REF_USERS
     }
     
+    var REF_USER_CURRENT: FIRDatabaseReference {
+        //We have them in the keychain, it matches the userID in the database
+        let uid = KeychainWrapper.stringForKey(KEY_UID)
+        let user = REF_USERS.child(uid!)    //We don't normally forceunwrap this, you have to do some safety stuff but this is out of scope of video
+        return user
+    }
+    
     var REF_POST_IMAGES: FIRStorageReference {
         return _REF_POST_IMAGES
     }
     
+   
     
     //Now we want to use these references to create users to post some data to the Firebase Database
     //It's important to differentiate between a DB user and the users we are authenticating - they're the same people, but we handle the data differently. 
