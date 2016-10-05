@@ -185,7 +185,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     //1. We want to sign out of Firebase
     //2. Remove uid from keychain
     @IBAction func SignOutTapped(_ sender: AnyObject) {
-        let keychainResult = KeychainWrapper.defaultKeychainWrapper().removeObjectForKey(KEY_UID)
+        let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("PASH: ID removed from Keychain: \(keychainResult)")
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)

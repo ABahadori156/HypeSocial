@@ -25,10 +25,11 @@ class SignInVC: UIViewController {
      
     }
 
+    //UPDATE KEYCHAINWRAPPER
     //Segueways to be performed off the bat need to be in viewDidAPPEAR not didLoad
     override func viewDidAppear(_ animated: Bool) {
         //This is checking the string in the uid, in the keychain - if it finds one, perform the segueway to go to FeedVC
-        if let _ = KeychainWrapper.defaultKeychainWrapper().stringForKey(KEY_UID) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             performSegue(withIdentifier: "goToFeed", sender: nil)
         }
     }
@@ -110,7 +111,8 @@ class SignInVC: UIViewController {
     //Saving user's UID to their keychain
     func completeSignIn(id: String, userData: Dictionary<String, String>) {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
-        let keychainResult = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_UID)
+        // let keychainResult = KeychainWrapper.standard.set(id, forKe KEY_UID)
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("PASH: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }

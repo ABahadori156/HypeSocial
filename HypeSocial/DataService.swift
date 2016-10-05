@@ -47,7 +47,7 @@ class DataService {
     var REF_USER_CURRENT: FIRDatabaseReference {
         //We have them in the keychain, it matches the userID in the database
         // let uid = KeychainWrapper.stringForKey(KEY_UID)
-        let uid = KeychainWrapper.defaultKeychainWrapper().stringForKey(KEY_UID)
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         let user = REF_USERS.child(uid!)    //We don't normally forceunwrap this, you have to do some safety stuff but this is out of scope of video
         return user
     }
